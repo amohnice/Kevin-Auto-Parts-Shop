@@ -262,10 +262,17 @@ nav ul.show + .overlay {
     .box {
         width: 70vw; /* 70% of the screen width */
         height: 70vw; /* Height scales with width */
+        max-width: 200px; /* Optional: set max-width for very small screens */
+        max-height: 200px; /* Optional: set max-height for very small screens */
     }
 
     .box span {
         transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); /* Adjust for smaller screens */
+    }
+
+    /* Adjust images within the carousel on small screens */
+    .box span img {
+        border-radius: 5px; /* Optional: smaller border-radius for better fit */
     }
 }
 
