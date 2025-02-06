@@ -194,6 +194,7 @@ nav ul.show + .overlay {
 
 #theme-toggle {
     background: none;
+    background-color: inherit;
     border: none;
     color: #fff;
     font-size: 1.2rem;
@@ -203,7 +204,8 @@ nav ul.show + .overlay {
 }
 
 #theme-toggle:hover {
-    background-color: #575757;
+    /*background-color: #575757;*/
+    color: #ff5722;
     border-radius: 4px;
 }
 
