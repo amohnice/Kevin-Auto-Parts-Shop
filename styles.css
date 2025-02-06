@@ -242,8 +242,16 @@ nav ul.show + .overlay {
     height: 100%;
     transform-origin: center;
     transform-style: preserve-3d;
-    transform: rotateY(calc(var(--i) * 40deg)) translateZ(300px);
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
     -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, #0004);
+}
+
+/* Fix the gap between first and last image */
+.box span:nth-child(1) {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);  /* Adjust for first image */
+}
+.box span:nth-child(8) {
+    transform: rotateY(calc(var(--i) * 45deg - 0.1deg)) translateZ(300px); /* Minor tweak to last image */
 }
 
 .box span img {
