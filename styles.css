@@ -140,12 +140,13 @@ nav ul.show + .overlay {
         display: none; /* Initially hidden */
         background-color: #333;
         position: fixed;
-        top: 60px;
-        right: -250px;
+        top: 60px; /* Position below the navbar */
+        right: -250px; /* Hide off-screen by default */
         height: calc(100vh - 60px); /* Full height minus the navbar */
         padding: 10px 0;
         z-index: 999;
         transition: right 0.3s ease; /* Smooth slide-in animation */
+        overflow-y: auto; /* Enable scrolling if content overflows */
     }
 
     nav ul.show {
@@ -164,10 +165,41 @@ nav ul.show + .overlay {
         width: 100%;
         padding: 10px 0;
         text-align: left;
+        color: #fff;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li button:hover {
+        background-color: #575757;
+        color: #fff;
     }
 
     .nav-toggler {
         display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .nav-toggler div {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 4px 0;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggler.open div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggler.open div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggler.open div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
 
     /* Overlay Style */
@@ -180,12 +212,14 @@ nav ul.show + .overlay {
         height: calc(100vh - 60px); /* Full height minus the navbar */
         background: rgba(0, 0, 0, 0.5);
         z-index: 998;
+        backdrop-filter: blur(5px); /* Add a blur effect to the overlay */
     }
 
     /* Show overlay when menu is toggled */
     nav ul.show + .overlay {
         display: block;
     }
+
     /* Prevent horizontal overflow on small screens */
     body {
         overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -728,4 +762,53 @@ footer {
 
 .social-links a:hover {
     color: #ff5722;
+}
+
+/* Bounce Animation */
+@keyframes animate_bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff5722;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #e64a19;
+    transform: translateY(-5px);
+}
+
+/* Apply Bounce Animation to the Arrow Icon */
+.back-to-top i {
+    animation: animate_bounce 2s infinite;
 }

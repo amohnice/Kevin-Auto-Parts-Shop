@@ -111,3 +111,22 @@ function toggleMenu() {
 
 // Close the menu when clicking outside (on the overlay)
 document.querySelector('.overlay').addEventListener('click', toggleMenu);
+
+// Smooth scroll to top
+document.querySelector('.back-to-top').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Show/hide back-to-top button
+window.addEventListener('scroll', () => {
+    const backToTopButton = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
