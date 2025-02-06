@@ -131,6 +131,7 @@ nav ul.show + .overlay {
     nav {
         flex-direction: row; /* Keep logo and toggler in a row */
         align-items: center;
+        position: relative; /* Ensure nav bar is properly aligned */
     }
 
     nav ul {
@@ -185,6 +186,10 @@ nav ul.show + .overlay {
     nav ul.show + .overlay {
         display: block;
     }
+    /* Prevent horizontal overflow on small screens */
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
 }
 
 #theme-toggle {
@@ -212,8 +217,9 @@ nav ul.show + .overlay {
 .box {
     position: relative;
     max-width: 150px;
-    width: 200px;
-    height: 250px;
+    width: 40vw; /* Make the width responsive (40% of the viewport width) */
+    height: 40vw; /* Make the height responsive (adjusts with width) */
+    max-height: 250px; /* Limit the max height to 250px on larger screens */
     transform-style: preserve-3d;
     animation: animate 20s linear infinite;
     margin: 50px auto;
@@ -249,6 +255,18 @@ nav ul.show + .overlay {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Make carousel even smaller on very small screens */
+@media (max-width: 480px) {
+    .box {
+        width: 70vw; /* 70% of the screen width */
+        height: 70vw; /* Height scales with width */
+    }
+
+    .box span {
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); /* Adjust for smaller screens */
+    }
 }
 
 /* Remove the default margin of the hero section */
@@ -454,12 +472,18 @@ nav ul.show + .overlay {
 .testimonials-container {
     display: flex;
     justify-content: space-around;
-    max-width: 800px;
+    max-width: 1000px; /* Ensure the container is responsive */
     margin: 0 auto;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .testimonial {
     text-align: center;
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .testimonial img {
@@ -470,22 +494,96 @@ nav ul.show + .overlay {
     object-fit: cover;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .testimonials-container {
+        justify-content: center; /* Center-align testimonials on smaller screens */
+    }
+
+    .testimonial {
+        flex: 1 0 45%; /* Allow testimonials to take up 45% of width */
+        margin-bottom: 20px;
+    }
+
+    .testimonial img {
+        width: 120px; /* Reduce image size for smaller screens */
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-container {
+        flex-direction: column; /* Stack testimonials vertically on very small screens */
+        align-items: center;
+    }
+
+    .testimonial {
+        flex: 1 0 100%; /* Make each testimonial take the full width */
+        margin: 20px 0;
+    }
+
+    .testimonial img {
+        width: 100px; /* Further reduce image size on very small screens */
+        height: 100px;
+    }
+}
+
 /* Blog Section Styles */
 .blog-posts {
     display: flex;
     justify-content: space-around;
-    max-width: 800px;
+    max-width: 800px; /* Ensure the container is responsive */
     margin: 0 auto;
+    flex-wrap: wrap; /* Allow blog posts to wrap on smaller screens */
 }
 
 .blog-post {
     text-align: center;
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .blog-post img {
     border-radius: 10px;
     margin-bottom: 10px;
-    max-width: 90%;
+    max-width: 90%; /* Make sure images don’t exceed 90% of their container */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-posts {
+        justify-content: center; /* Center-align blog posts on smaller screens */
+    }
+
+    .blog-post {
+        flex: 1 0 45%; /* Allow blog posts to take up 45% of the width */
+        margin-bottom: 20px;
+    }
+
+    .blog-post img {
+        max-width: 100%; /* Ensure images are fully responsive */
+        width: 100%; /* Make images stretch to the full width of the container */
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-posts {
+        flex-direction: column; /* Stack blog posts vertically on very small screens */
+        align-items: center;
+    }
+
+    .blog-post {
+        flex: 1 0 100%; /* Make each blog post take the full width */
+        margin: 20px 0;
+    }
+
+    .blog-post img {
+        width: 100%; /* Ensure images are fully responsive and stretch across the screen */
+        max-width: 100%; /* Make sure images don’t exceed 100% of their container */
+    }
 }
 
 /* Contact Section Styles */
@@ -494,11 +592,13 @@ nav ul.show + .overlay {
     justify-content: space-between;
     max-width: 800px;
     margin: 0 auto;
+    flex-wrap: wrap; /* Allow items to wrap in smaller screens */
 }
 
 .contact-form {
     flex: 1;
     margin-right: 20px;
+    margin-bottom: 20px; /* Add some space at the bottom for smaller screens */
 }
 
 .form-group {
@@ -519,6 +619,7 @@ nav ul.show + .overlay {
 
 .contact-info {
     text-align: left;
+    margin-left: 20px; /* Space between contact info and the form */
 }
 
 .contact-info p {
@@ -543,6 +644,28 @@ nav ul.show + .overlay {
 .contact-info i:hover {
     color: #fff;  /* Change icon color to white when hovered */
     transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column; /* Stack form and contact info vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .contact-form {
+        margin-right: 0;
+        margin-bottom: 30px; /* Add more space between form and contact info */
+    }
+
+    .contact-info {
+        margin-left: 0;
+        text-align: center; /* Center-align contact info for smaller screens */
+    }
+
+    .contact-info p {
+        font-size: 1rem; /* Reduce font size on smaller screens */
+    }
 }
 
 /* Footer Styles */
