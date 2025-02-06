@@ -252,27 +252,42 @@ nav ul.show + .overlay {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensure the images maintain their aspect ratio */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Make carousel even smaller on very small screens */
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {*/
+/*    .box {*/
+/*        width: 70vw; !* 70% of the screen width *!*/
+/*        height: 70vw; !* Height scales with width *!*/
+/*        max-width: 200px; !* Optional: set max-width for very small screens *!*/
+/*        max-height: 200px; !* Optional: set max-height for very small screens *!*/
+/*        margin: 30px auto; !* Reduced margin to give more space on small screens *!*/
+/*    }*/
+
+/*    .box span {*/
+/*        transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); !* Reduce the translateZ for better fit on small screens *!*/
+/*    }*/
+
+/*    !* Adjust images within the carousel on small screens *!*/
+/*    .box span img {*/
+/*        border-radius: 5px; !* Optional: smaller border-radius for better fit *!*/
+/*    }*/
+/*}*/
+
+/* Additional tweak for very small screens (below 320px) */
+@media (max-width: 320px) {
     .box {
-        width: 70vw; /* 70% of the screen width */
-        height: 70vw; /* Height scales with width */
-        max-width: 200px; /* Optional: set max-width for very small screens */
-        max-height: 200px; /* Optional: set max-height for very small screens */
+        width: 80vw; /* 80% of the screen width for very small screens */
+        height: 80vw; /* Height scales with width */
+        max-width: 150px; /* Optional: set max-width */
+        max-height: 150px; /* Optional: set max-height */
     }
 
     .box span {
-        transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); /* Adjust for smaller screens */
-    }
-
-    /* Adjust images within the carousel on small screens */
-    .box span img {
-        border-radius: 5px; /* Optional: smaller border-radius for better fit */
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(100px); /* Further reduce translateZ */
     }
 }
 
