@@ -80,6 +80,11 @@ nav ul li a.active {
     border-radius: 4px;
 }
 
+/* Optional: Improve visual clarity */
+    nav ul li a.active:hover {
+        background-color: #444; /* Slightly different hover effect for active link */
+    }
+
 /* Navbar toggler */
 .nav-toggler {
     display: none;
@@ -170,6 +175,21 @@ nav ul.show + .overlay {
         color: #fff;
         font-weight: bold;
         transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Active link indicator */
+    nav ul li a.active {
+        background-color: #575757; /* Highlight active link */
+        border-radius: 4px;
+        padding: 5px 5px; /* Ensure there's padding to cover the entire link */
+        width: 100%; /* Ensure it takes the full width of the container */
+    }
+
+    /* Optional: Improve visual clarity */
+    nav ul li a.active:hover {
+        background-color: #444; /* Slightly different hover effect for active link */
+        padding: 5px 5px; /* Ensure there's padding to cover the entire link */
+        border-radius: 4px;
     }
 
     nav ul li a:hover, nav ul li button:hover {
