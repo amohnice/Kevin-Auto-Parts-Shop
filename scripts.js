@@ -96,10 +96,12 @@ function toggleMenu() {
     const navUl = document.querySelector('nav ul');
     const navToggler = document.querySelector('.nav-toggler');
     const overlay = document.querySelector('.overlay');
+    const body = document.body;
 
     // Toggle the 'show' class for nav and toggle the nav-toggler animation
     navUl.classList.toggle('show');
     navToggler.classList.toggle('open');
+    body.classList.toggle('no-scroll');
 
     // Toggle the overlay visibility based on the menu state
     if (navUl.classList.contains('show')) {
